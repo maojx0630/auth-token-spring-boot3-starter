@@ -1,4 +1,4 @@
-# auth-token-spring-boot-starter
+# auth-token-spring-boot3-starter
 
 #### 项目实现了一个简单的登录拦截提供了如下功能
 
@@ -19,7 +19,7 @@
 ```xml
 <dependency>
     <groupId>com.github.maojx0630</groupId>
-    <artifactId>auth-token-spring-boot-starter</artifactId>
+    <artifactId>auth-token-spring-boot3-starter</artifactId>
     <version>0.0.1</version>
 </dependency>
 ```
