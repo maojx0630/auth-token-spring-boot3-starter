@@ -1,0 +1,10 @@
+com.github.maojx0630.auth_token.config.AuthTokenConfig
+com.github.maojx0630.auth_token.config.login.LoginAuthTokenConfig
+com.github.maojx0630.auth_token.configuration.LoginAuthTokenConfiguration
+com.github.maojx0630.auth_token.config.permissions.PermissionsAuthTokenConfig
+com.github.maojx0630.auth_token.configuration.PermissionsAuthTokenConfiguration
+com.github.maojx0630.auth_token.config.role.RoleAuthTokenConfig
+com.github.maojx0630.auth_token.configuration.RoleAuthTokenConfiguration
+com.github.maojx0630.auth_token.core.AuthTokenConfiguration
+com.github.maojx0630.auth_token.store.LocalTokenStoreConfiguration
+com.github.maojx0630.auth_token.store.RedisTokenStoreConfiguration
