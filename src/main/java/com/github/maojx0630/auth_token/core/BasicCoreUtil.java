@@ -1,6 +1,5 @@
 package com.github.maojx0630.auth_token.core;
 
-import com.alibaba.ttl.TransmittableThreadLocal;
 import com.github.maojx0630.auth_token.config.AuthTokenConfig;
 import com.github.maojx0630.auth_token.exception.AuthTokenException;
 import com.github.maojx0630.auth_token.model.AuthTokenRes;
@@ -27,8 +26,7 @@ public class BasicCoreUtil {
   private static final Charset UTF8 = StandardCharsets.UTF_8;
 
   /** THREAD_LOCAL */
-  private static final TransmittableThreadLocal<AuthTokenRes> THREAD_LOCAL =
-      new TransmittableThreadLocal<>();
+  private static final ThreadLocal<AuthTokenRes> THREAD_LOCAL = new ThreadLocal<>();
 
   private static AuthTokenConfig config;
   /** token存储 */
