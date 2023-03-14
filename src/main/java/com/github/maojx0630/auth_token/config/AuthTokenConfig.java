@@ -31,6 +31,13 @@ public class AuthTokenConfig {
   /** 是否尝试从header里读取token */
   private boolean readHeader = true;
 
+
+  /** 是否尝试从session里读取token */
+  private boolean readSession = true;
+
+  /** 是否尝试从cookie里读取token */
+  private boolean readCookie = true;
+
   /** 默认过期时间 */
   private long tokenTimeout = 1000 * 60 * 60 * 24;
   /** 是否访问后重置过期时间 */
@@ -91,6 +98,22 @@ public class AuthTokenConfig {
 
   public void setReadHeader(boolean readHeader) {
     this.readHeader = readHeader;
+  }
+
+  public boolean isReadSession() {
+    return readSession;
+  }
+
+  public void setReadSession(boolean readSession) {
+    this.readSession = readSession;
+  }
+
+  public boolean isReadCookie() {
+    return readCookie;
+  }
+
+  public void setReadCookie(boolean readCookie) {
+    this.readCookie = readCookie;
   }
 
   public long getTokenTimeout() {

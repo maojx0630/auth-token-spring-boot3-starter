@@ -1,11 +1,11 @@
 package com.github.maojx0630.auth_token.core;
 
 import com.github.maojx0630.auth_token.config.AuthTokenConfig;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
-
 
 /**
  * 用于检查token填充登录用户
@@ -23,7 +23,7 @@ public class AuthTokenInterceptor implements HandlerInterceptor {
 
   @Override
   public boolean preHandle(
-          HttpServletRequest request, HttpServletResponse response, Object handler) {
+      HttpServletRequest request, HttpServletResponse response, Object handler) {
     if (authTokenConfig.isReadHeader()) {
       String token = request.getHeader(authTokenConfig.getTokenName());
       if (StringUtils.hasText(token)) {
@@ -32,11 +32,36 @@ public class AuthTokenInterceptor implements HandlerInterceptor {
         }
       }
     }
-    if (authTokenConfig.isReadHeader()) {
+    if (authTokenConfig.isReadParam()) {
       String token = request.getParameter(authTokenConfig.getTokenName());
       if (StringUtils.hasText(token)) {
         if (BasicCoreUtil.verifyToken(token)) {
           return true;
+        }
+      }
+    }
+    if (authTokenConfig.isReadSession()) {
+      Object attribute = request.getSession().getAttribute(authTokenConfig.getTokenName());
+      if (attribute instanceof String token) {
+        if (StringUtils.hasText(token)) {
+          if (BasicCoreUtil.verifyToken(token)) {
+            return true;
+          }
+        }
+      }
+    }
+    if (authTokenConfig.isReadCookie()) {
+      Cookie[] cookies = request.getCookies();
+      if (null != cookies && cookies.length > 0) {
+        for (Cookie cookie : cookies) {
+          if (authTokenConfig.getTokenName().equals(cookie.getName())) {
+            String token = cookie.getValue();
+            if (StringUtils.hasText(token)) {
+              if (BasicCoreUtil.verifyToken(token)) {
+                return true;
+              }
+            }
+          }
         }
       }
     }

@@ -46,6 +46,10 @@ auth-token:
     read-param: true
     # 是否从 http header中读取token 优先读取header
     read-header: true
+    # 是否从 url session中读取token
+    read-session: true
+    # 是否从 http cookie中读取token 
+    read-cookie: true
     # 过期时间 单位毫秒
     token-timeout: 86400000
     # 访问后是否重置过期时间
